@@ -1,13 +1,12 @@
 'use client'
 
-import Image from '@tiptap/extension-image'
-import ImageResize from 'tiptap-extension-resize-image';
 import { TaskItem, TaskList } from '@tiptap/extension-list'
 import { TableKit } from '@tiptap/extension-table'
 import { EditorContent, useEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
+import ImageResize from 'tiptap-extension-resize-image'
 
-const Editor = () => {
+export const Editor = () => {
     const editor = useEditor({
         editorProps: {
             attributes: {
@@ -16,7 +15,6 @@ const Editor = () => {
             },
         },
         extensions: [
-            Image,
             ImageResize,
             StarterKit,
             TaskList,
@@ -39,5 +37,3 @@ const Editor = () => {
         </div>
     )
 }
-
-export default Editor
