@@ -19,7 +19,7 @@ export const RedoButton: FC<ButtonWrapper> = ({ editor }) => (
     />
 )
 
-export const PrintButton: FC<ButtonWrapper> = ({ editor }) => (
+export const PrintButton = () => (
     <Button label="Print" icon={PrinterIcon} onClick={() => window.print()} />
 )
 

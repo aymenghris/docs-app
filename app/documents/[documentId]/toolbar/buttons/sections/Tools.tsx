@@ -7,7 +7,7 @@ import {
     RemoveFormattingIcon,
 } from 'lucide-react'
 
-export const AddCommentButton: FC<ButtonWrapper> = ({ editor }) => (
+export const AddCommentButton = () => (
     <Button
         label="Comment"
         icon={MessageSquarePlusIcon}
