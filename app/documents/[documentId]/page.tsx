@@ -1,5 +1,6 @@
 import { FC } from 'react'
-import Editor from '@/app/documents/Editor'
+import { Toolbar } from '@toolbar/Toolbar'
+import { Editor } from './Editor'
 
 interface DocumentIdPageProps {
     params: Promise<{
@@ -11,6 +12,7 @@ const DocumentIdPage: FC<DocumentIdPageProps> = async ({ params }) => {
     const { documentId } = await params
     return (
         <div className="min-h-screen bg-[#fafbfd]">
+            <Toolbar />
             <Editor />
         </div>
     )
