@@ -2,6 +2,7 @@ import {
     FontFamilyButton,
     HeadingLevelButton,
     TextColorButton,
+    TextHighlightButton,
 } from '@toolbar/buttons/custom'
 import {
     PrintButton,
@@ -25,6 +26,6 @@ export const sectionsButtons = [
     [FontFamilyButton],
     [HeadingLevelButton],
     [BoldToggleButton, ItalicToggleButton, UnderlineToggleButton],
-    [TextColorButton],
+    [TextColorButton, TextHighlightButton],
     [AddCommentButton, ListTodoButton, RemoveFormattingButton],
 ]
