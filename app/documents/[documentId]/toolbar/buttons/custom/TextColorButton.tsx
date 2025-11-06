@@ -8,7 +8,9 @@ import { ColorResult, SketchPicker } from 'react-color'
 
 export const TextColorButton = () => {
     const { editor } = useEditorStore()
-    const value = editor?.getAttributes('textStyle').color || '#000000'
+
+    const selectedTextColor =
+        editor?.getAttributes('textStyle').color || '#000000'
 
     const handleChange = (color: ColorResult) => {
         editor?.chain().focus().setColor(color.hex).run()
@@ -22,13 +24,16 @@ export const TextColorButton = () => {
                         A
                         <div
                             className="h-0.5 w-full"
-                            style={{ backgroundColor: value }}
+                            style={{ backgroundColor: selectedTextColor }}
                         />
                     </span>
                 </button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="">
-                <SketchPicker color={value} onChange={handleChange} />
+                <SketchPicker
+                    color={selectedTextColor}
+                    onChange={handleChange}
+                />
             </DropdownMenuContent>
         </DropdownMenu>
     )
