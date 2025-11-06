@@ -6,8 +6,8 @@ const config: Config = {
     semi: false,
     singleQuote: true,
     plugins: [
-        'prettier-plugin-tailwindcss',
         '@trivago/prettier-plugin-sort-imports',
+        'prettier-plugin-tailwindcss', // Must be the last!
     ],
 
     importOrder: [
