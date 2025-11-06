@@ -1,4 +1,8 @@
-import { FontFamilyButton, HeadingLevelButton } from '@toolbar/buttons/custom'
+import {
+    FontFamilyButton,
+    HeadingLevelButton,
+    TextColorButton,
+} from '@toolbar/buttons/custom'
 import {
     PrintButton,
     RedoButton,
@@ -21,5 +25,6 @@ export const sectionsButtons = [
     [FontFamilyButton],
     [HeadingLevelButton],
     [BoldToggleButton, ItalicToggleButton, UnderlineToggleButton],
+    [TextColorButton],
     [AddCommentButton, ListTodoButton, RemoveFormattingButton],
 ]
