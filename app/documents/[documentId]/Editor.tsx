@@ -1,9 +1,10 @@
 'use client'
 
 import { useEditorStore } from '@/store/use-editor'
+import Highlight from '@tiptap/extension-highlight'
 import { TaskItem, TaskList } from '@tiptap/extension-list'
 import { TableKit } from '@tiptap/extension-table'
-import { FontFamily, TextStyle } from '@tiptap/extension-text-style'
+import { Color, FontFamily, TextStyle } from '@tiptap/extension-text-style'
 import { EditorContent, useEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import ImageResize from 'tiptap-extension-resize-image'
@@ -33,7 +34,11 @@ export const Editor = () => {
             },
         },
         extensions: [
+            Color,
             FontFamily,
+            Highlight.configure({
+                multicolor: true,
+            }),
             ImageResize,
             StarterKit,
             TaskList,
