@@ -1,7 +1,7 @@
 import type { Editor } from '@tiptap/react'
 import { LucideIcon } from 'lucide-react'
 
-export interface Button {
+export interface ToolbarButton {
     label: string
     icon: LucideIcon
     onClick: () => void

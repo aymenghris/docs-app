@@ -1,10 +1,10 @@
 import { FC } from 'react'
-import { Button } from '@toolbar/buttons/Button'
+import { ToolbarButton } from '@toolbar/buttons/ToolbarButton'
 import { ButtonWrapper } from '@toolbar/utils/types'
 import { PrinterIcon, Redo2Icon, SpellCheckIcon, Undo2Icon } from 'lucide-react'
 
 export const UndoButton: FC<ButtonWrapper> = ({ editor }) => (
-    <Button
+    <ToolbarButton
         label="Undo"
         icon={Undo2Icon}
         onClick={() => editor?.chain().focus().undo().run()}
@@ -12,7 +12,7 @@ export const UndoButton: FC<ButtonWrapper> = ({ editor }) => (
 )
 
 export const RedoButton: FC<ButtonWrapper> = ({ editor }) => (
-    <Button
+    <ToolbarButton
         label="Redo"
         icon={Redo2Icon}
         onClick={() => editor?.chain().focus().redo().run()}
@@ -20,11 +20,15 @@ export const RedoButton: FC<ButtonWrapper> = ({ editor }) => (
 )
 
 export const PrintButton = () => (
-    <Button label="Print" icon={PrinterIcon} onClick={() => window.print()} />
+    <ToolbarButton
+        label="Print"
+        icon={PrinterIcon}
+        onClick={() => window.print()}
+    />
 )
 
 export const SpellCheckButton: FC<ButtonWrapper> = ({ editor }) => (
-    <Button
+    <ToolbarButton
         label="Spell Check"
         icon={SpellCheckIcon}
         onClick={() => {

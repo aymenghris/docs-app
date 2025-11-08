@@ -1,10 +1,10 @@
 import { FC } from 'react'
-import { Button } from '@toolbar/buttons/Button'
+import { ToolbarButton } from '@toolbar/buttons/ToolbarButton'
 import { ButtonWrapper } from '@toolbar/utils/types'
 import { BoldIcon, ItalicIcon, UnderlineIcon } from 'lucide-react'
 
 export const BoldToggleButton: FC<ButtonWrapper> = ({ editor }) => (
-    <Button
+    <ToolbarButton
         label="Bold"
         icon={BoldIcon}
         onClick={() => editor?.chain().focus().toggleBold().run()}
@@ -13,7 +13,7 @@ export const BoldToggleButton: FC<ButtonWrapper> = ({ editor }) => (
 )
 
 export const ItalicToggleButton: FC<ButtonWrapper> = ({ editor }) => (
-    <Button
+    <ToolbarButton
         label="Italic"
         icon={ItalicIcon}
         onClick={() => editor?.chain().focus().toggleItalic().run()}
@@ -22,7 +22,7 @@ export const ItalicToggleButton: FC<ButtonWrapper> = ({ editor }) => (
 )
 
 export const UnderlineToggleButton: FC<ButtonWrapper> = ({ editor }) => (
-    <Button
+    <ToolbarButton
         label="Underline"
         icon={UnderlineIcon}
         onClick={() => editor?.chain().focus().toggleUnderline().run()}

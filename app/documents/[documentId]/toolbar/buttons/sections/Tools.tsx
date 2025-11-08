@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Button } from '@toolbar/buttons/Button'
+import { ToolbarButton } from '@toolbar/buttons/ToolbarButton'
 import { ButtonWrapper } from '@toolbar/utils/types'
 import {
     ListTodoIcon,
@@ -8,7 +8,7 @@ import {
 } from 'lucide-react'
 
 export const AddCommentButton = () => (
-    <Button
+    <ToolbarButton
         label="Comment"
         icon={MessageSquarePlusIcon}
         onClick={() => console.log('Comment')}
@@ -17,7 +17,7 @@ export const AddCommentButton = () => (
 )
 
 export const ListTodoButton: FC<ButtonWrapper> = ({ editor }) => (
-    <Button
+    <ToolbarButton
         label="List Todo"
         icon={ListTodoIcon}
         onClick={() => editor?.chain().focus().toggleTaskList().run()}
@@ -26,7 +26,7 @@ export const ListTodoButton: FC<ButtonWrapper> = ({ editor }) => (
 )
 
 export const RemoveFormattingButton: FC<ButtonWrapper> = ({ editor }) => (
-    <Button
+    <ToolbarButton
         label="Remove Formatting"
         icon={RemoveFormattingIcon}
         onClick={() => editor?.chain().focus().unsetAllMarks().run()}
