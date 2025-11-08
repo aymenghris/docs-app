@@ -9,17 +9,17 @@ import {
     RedoButton,
     SpellCheckButton,
     UndoButton,
-} from '@toolbar/buttons/sections/Actions'
+} from '@toolbar/buttons/sections/ActionsSection'
 import {
     BoldToggleButton,
     ItalicToggleButton,
     UnderlineToggleButton,
-} from '@toolbar/buttons/sections/TextFormatting'
+} from '@toolbar/buttons/sections/TextFormattingSection'
 import {
     AddCommentButton,
     ListTodoButton,
     RemoveFormattingButton,
-} from '@toolbar/buttons/sections/Tools'
+} from '@toolbar/buttons/sections/ToolsSection'
 
 export const sectionsButtons = [
     [UndoButton, RedoButton, PrintButton, SpellCheckButton],
