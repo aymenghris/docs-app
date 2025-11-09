@@ -1,4 +1,5 @@
 import {
+    AlignButton,
     FontFamilyButton,
     HeadingLevelButton,
     ImageButton,
@@ -32,6 +33,7 @@ export const sectionsButtons = [
     [
         LinkButton,
         ImageButton,
+        AlignButton,
         AddCommentButton,
         ListTodoButton,
         RemoveFormattingButton,

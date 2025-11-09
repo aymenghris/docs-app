@@ -53,7 +53,9 @@ export const Editor = () => {
             TableKit.configure({
                 table: { resizable: true },
             }),
-            TextAlign,
+            TextAlign.configure({
+                types: ['heading', 'paragraph'],
+            }),
             TextStyle,
         ],
         content: '<p>Hello World 🔥</p>',
