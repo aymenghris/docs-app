@@ -2,6 +2,7 @@
 
 import { useEditorStore } from '@/store/use-editor'
 import Highlight from '@tiptap/extension-highlight'
+import Link from '@tiptap/extension-link'
 import { TaskItem, TaskList } from '@tiptap/extension-list'
 import { TableKit } from '@tiptap/extension-table'
 import { Color, FontFamily, TextStyle } from '@tiptap/extension-text-style'
@@ -40,6 +41,9 @@ export const Editor = () => {
                 multicolor: true,
             }),
             ImageResize,
+            Link.configure({
+                openOnClick: false,
+            }),
             StarterKit,
             TaskList,
             TaskItem.configure({
@@ -55,8 +59,8 @@ export const Editor = () => {
     })
 
     return (
-        <div className="size-full overflow-x-auto px-4 bg-[#f9fbfd] print:p-0 print:bg-white print:overflow-visible">
-            <div className="min-w-max flex justify-center w-[816px] py-4 print:py-0 mx-auto print:w-full print:min-w-0">
+        <div className="size-full overflow-x-auto bg-[#f9fbfd] px-4 print:overflow-visible print:bg-white print:p-0">
+            <div className="mx-auto flex w-[816px] min-w-max justify-center py-4 print:w-full print:min-w-0 print:py-0">
                 <EditorContent editor={editor} />
             </div>
         </div>
