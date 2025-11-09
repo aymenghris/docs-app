@@ -4,6 +4,7 @@ import {
     HeadingLevelButton,
     ImageButton,
     LinkButton,
+    ListButton,
     TextColorButton,
     TextHighlightButton,
 } from '@toolbar/buttons/custom'
@@ -30,10 +31,10 @@ export const sectionsButtons = [
     [HeadingLevelButton],
     [BoldToggleButton, ItalicToggleButton, UnderlineToggleButton],
     [TextColorButton, TextHighlightButton],
+    [LinkButton, ImageButton],
     [
-        LinkButton,
-        ImageButton,
         AlignButton,
+        ListButton,
         AddCommentButton,
         ListTodoButton,
         RemoveFormattingButton,
