@@ -1,6 +1,7 @@
 import {
     FontFamilyButton,
     HeadingLevelButton,
+    LinkButton,
     TextColorButton,
     TextHighlightButton,
 } from '@toolbar/buttons/custom'
@@ -27,5 +28,6 @@ export const sectionsButtons = [
     [HeadingLevelButton],
     [BoldToggleButton, ItalicToggleButton, UnderlineToggleButton],
     [TextColorButton, TextHighlightButton],
+    [LinkButton],
     [AddCommentButton, ListTodoButton, RemoveFormattingButton],
 ]

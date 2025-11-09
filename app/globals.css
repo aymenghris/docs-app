@@ -122,7 +122,6 @@
 
 .tiptap {
     /* Heading styles */
-
     h1,
     h2,
     h3,
@@ -170,8 +169,16 @@
         }
     }
 
-    /* List styles */
+    /* Link styles */
+    a {
+        @apply text-blue-600 cursor-pointer;
 
+        &:hover {
+            @apply underline text-blue-800;
+        }
+    }
+
+    /* List styles */
     ul,
     ol {
         padding: 0 1rem;
