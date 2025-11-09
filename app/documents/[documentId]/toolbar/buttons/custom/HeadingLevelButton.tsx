@@ -6,11 +6,7 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { cn } from '@/lib/utils'
 import { useEditorStore } from '@/store/use-editor'
-import {
-    applyHeadingLevel,
-    getCurrentHeading,
-    isHeadingActive,
-} from '@toolbar/buttons/custom/utils'
+import type { Level } from '@tiptap/extension-heading'
 import { ChevronDownIcon } from 'lucide-react'
 
 export const HeadingLevelButton = () => {
@@ -25,32 +21,51 @@ export const HeadingLevelButton = () => {
         { label: 'Heading 5', value: 5, fontSize: '16px' },
     ]
 
+    const getCurrentHeading = () => {
+        const level = [1, 2, 3, 4, 5].find((l) =>
+            editor?.isActive('heading', { level: l }),
+        )
+        return level ? `Heading ${level}` : 'Normal text'
+    }
+
+    const isHeadingActive = (value: number) =>
+        (value === 0 && !editor?.isActive('heading')) ||
+        editor?.isActive('heading', { level: value })
+
+    const applyHeadingLevel = (value: number) => {
+        if (value === 0) editor?.chain().focus().setParagraph().run()
+        else
+            editor
+                ?.chain()
+                .focus()
+                .toggleHeading({ level: value as Level })
+                .run()
+    }
+
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
                 <button
                     className={cn(
-                        'flex items-center justify-center shrink-0',
+                        'flex shrink-0 items-center justify-center',
                         'h-7 min-w-7 px-1.5',
                         'text-sm',
-                        'rounded-sm   overflow-hidden',
+                        'overflow-hidden rounded-sm',
                         'hover:bg-neutral-200/80',
                     )}
                 >
-                    <span className="truncate">
-                        {getCurrentHeading(editor)}
-                    </span>
-                    <ChevronDownIcon className="size-4 ml-2 shrink-0" />
+                    <span className="truncate">{getCurrentHeading()}</span>
+                    <ChevronDownIcon className="ml-2 size-4 shrink-0" />
                 </button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="p-1 flex flex-col gap-y-1">
+            <DropdownMenuContent className="flex flex-col gap-y-1 p-1">
                 {headings.map(({ label, value, fontSize }) => (
                     <DropdownMenuItem
                         key={value}
-                        onClick={() => applyHeadingLevel(editor, value)}
+                        onClick={() => applyHeadingLevel(value)}
                         className={cn(
-                            'flex items-center gap-x-2 px-2 py-1 rounded-sm hover:bg-neutral-200/80',
-                            isHeadingActive(editor, value) && 'bg-neutral-200',
+                            'flex items-center gap-x-2 rounded-sm px-2 py-1 hover:bg-neutral-200/80',
+                            isHeadingActive(value) && 'bg-neutral-200',
                         )}
                         style={{ fontSize }}
                     >
