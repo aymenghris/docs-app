@@ -1,6 +1,7 @@
 import {
     FontFamilyButton,
     HeadingLevelButton,
+    ImageButton,
     LinkButton,
     TextColorButton,
     TextHighlightButton,
@@ -28,6 +29,11 @@ export const sectionsButtons = [
     [HeadingLevelButton],
     [BoldToggleButton, ItalicToggleButton, UnderlineToggleButton],
     [TextColorButton, TextHighlightButton],
-    [LinkButton],
-    [AddCommentButton, ListTodoButton, RemoveFormattingButton],
+    [
+        LinkButton,
+        ImageButton,
+        AddCommentButton,
+        ListTodoButton,
+        RemoveFormattingButton,
+    ],
 ]
