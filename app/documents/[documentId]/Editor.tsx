@@ -2,9 +2,9 @@
 
 import { useEditorStore } from '@/store/use-editor'
 import Highlight from '@tiptap/extension-highlight'
-import Link from '@tiptap/extension-link'
 import { TaskItem, TaskList } from '@tiptap/extension-list'
 import { TableKit } from '@tiptap/extension-table'
+import TextAlign from '@tiptap/extension-text-align'
 import { Color, FontFamily, TextStyle } from '@tiptap/extension-text-style'
 import { EditorContent, useEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
@@ -41,10 +41,11 @@ export const Editor = () => {
                 multicolor: true,
             }),
             ImageResize,
-            Link.configure({
-                openOnClick: false,
+            StarterKit.configure({
+                link: {
+                    openOnClick: false,
+                },
             }),
-            StarterKit,
             TaskList,
             TaskItem.configure({
                 nested: true,
@@ -52,6 +53,7 @@ export const Editor = () => {
             TableKit.configure({
                 table: { resizable: true },
             }),
+            TextAlign,
             TextStyle,
         ],
         content: '<p>Hello World 🔥</p>',
