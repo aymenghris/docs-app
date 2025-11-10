@@ -4,6 +4,7 @@ import {
     FontSizeButton,
     HeadingLevelButton,
     ImageButton,
+    LineHeightButton,
     LinkButton,
     ListButton,
     TextColorButton,
@@ -36,6 +37,7 @@ export const sectionsButtons = [
     [LinkButton, ImageButton],
     [
         AlignButton,
+        LineHeightButton,
         ListButton,
         AddCommentButton,
         ListTodoButton,
