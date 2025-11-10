@@ -1,6 +1,7 @@
 'use client'
 
 import { FontSizeExtension } from '@/extensions/font-size'
+import { LineHeightExtension } from '@/extensions/line-height'
 import { useEditorStore } from '@/store/use-editor'
 import Highlight from '@tiptap/extension-highlight'
 import { TaskItem, TaskList } from '@tiptap/extension-list'
@@ -43,6 +44,7 @@ export const Editor = () => {
                 multicolor: true,
             }),
             ImageResize,
+            LineHeightExtension,
             StarterKit.configure({
                 link: {
                     openOnClick: false,
