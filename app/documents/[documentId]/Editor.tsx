@@ -1,5 +1,6 @@
 'use client'
 
+import { FontSizeExtension } from '@/extensions/font-size'
 import { useEditorStore } from '@/store/use-editor'
 import Highlight from '@tiptap/extension-highlight'
 import { TaskItem, TaskList } from '@tiptap/extension-list'
@@ -37,6 +38,7 @@ export const Editor = () => {
         extensions: [
             Color,
             FontFamily,
+            FontSizeExtension,
             Highlight.configure({
                 multicolor: true,
             }),

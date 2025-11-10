@@ -1,6 +1,7 @@
 import {
     AlignButton,
     FontFamilyButton,
+    FontSizeButton,
     HeadingLevelButton,
     ImageButton,
     LinkButton,
@@ -29,6 +30,7 @@ export const sectionsButtons = [
     [UndoButton, RedoButton, PrintButton, SpellCheckButton],
     [FontFamilyButton],
     [HeadingLevelButton],
+    [FontSizeButton],
     [BoldToggleButton, ItalicToggleButton, UnderlineToggleButton],
     [TextColorButton, TextHighlightButton],
     [LinkButton, ImageButton],
