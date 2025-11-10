@@ -9,7 +9,7 @@ import { ColorResult, SketchPicker } from 'react-color'
 
 export const TextHighlightButton = () => {
     const { editor } = useEditorStore()
-    const selectedHighlightColor =
+    const currentHighlightColor =
         editor?.getAttributes('highlight').color || '#FFFFFF'
 
     const handleChange = (color: ColorResult) => {
@@ -25,7 +25,7 @@ export const TextHighlightButton = () => {
             </DropdownMenuTrigger>
             <DropdownMenuContent className="">
                 <SketchPicker
-                    color={selectedHighlightColor}
+                    color={currentHighlightColor}
                     onChange={handleChange}
                 />
             </DropdownMenuContent>
