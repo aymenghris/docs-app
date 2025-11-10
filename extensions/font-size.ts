@@ -6,6 +6,7 @@ export const FontSizeExtension = Extension.create({
     addOptions() {
         return {
             types: ['textStyle'],
+            defaultFontSize: '16px',
         }
     },
     addGlobalAttributes() {
@@ -15,9 +16,15 @@ export const FontSizeExtension = Extension.create({
                 attributes: {
                     fontSize: {
                         default: null,
-                        parseHTML: (element) => element.style.fontSize || null,
+                        parseHTML: (element) =>
+                            element.style.fontSize ||
+                            this.options.defaultFontSize,
                         renderHTML: (attributes) => {
-                            if (!attributes.fontSize) return {}
+                            if (
+                                attributes.fontSize ===
+                                this.options.defaultFontSize
+                            )
+                                return {}
                             return {
                                 style: `font-size: ${attributes.fontSize}`,
                             }
@@ -38,7 +45,9 @@ export const FontSizeExtension = Extension.create({
                 () =>
                 ({ chain }) => {
                     return chain()
-                        .setMark('textStyle', { fontSize: null })
+                        .setMark('textStyle', {
+                            fontSize: this.options.defaultFontSize,
+                        })
                         .removeEmptyTextStyle()
                         .run()
                 },
