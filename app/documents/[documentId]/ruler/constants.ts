@@ -1,0 +1,8 @@
+export const RULER_CONFIG = {
+    WIDTH: 816,
+    TOTAL_MARKERS: 83,
+    MAJOR_INTERVAL: 10,
+    MEDIUM_INTERVAL: 5,
+    DEFAULT_MARGIN: 56,
+    MIN_CONTENT_WIDTH: 100,
+} as const
