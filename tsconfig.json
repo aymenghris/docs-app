@@ -21,7 +21,8 @@
         "paths": {
             "@/*": ["./*"],
             "@toolbar/*": ["./app/documents/[documentId]/toolbar/*"],
-            "@ruler/*": ["./app/documents/[documentId]/ruler/*"]
+            "@ruler/*": ["./app/documents/[documentId]/ruler/*"],
+            "@navbar/*": ["./app/documents/[documentId]/navbar/*"]
         }
     },
     "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
