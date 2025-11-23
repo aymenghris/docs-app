@@ -11,16 +11,19 @@ export const Toolbar = () => {
 
     return (
         // NOTE: min-h-10 to h-10 makes the Separator appears.
-        <div className="bg-[#f1f4f9] px-2.5 py-0.5 rounded-3xl h-10 flex items-center gap-x-0.5 overflow-x-auto">
+        <div className="flex h-10 items-center gap-x-0.5 overflow-x-auto rounded-3xl bg-[#f1f4f9] px-2.5 py-0.5">
             {sectionsButtons.map((section, sectionIndex) => (
                 <Fragment key={sectionIndex}>
-                    {section.map((Button, buttonIndex) => (
-                        <Button key={buttonIndex} editor={editor} />
+                    {section.map((ToolbarButtonComponent, buttonIndex) => (
+                        <ToolbarButtonComponent
+                            key={buttonIndex}
+                            editor={editor}
+                        />
                     ))}
                     {sectionIndex < sectionsButtons.length - 1 && (
                         <Separator
                             orientation="vertical"
-                            className="bg-neutral-300 max-h-6 "
+                            className="max-h-6 bg-neutral-300"
                         />
                     )}
                 </Fragment>
