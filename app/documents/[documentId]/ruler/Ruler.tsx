@@ -162,12 +162,8 @@ export const Ruler: FC<RulerProps> = ({}) => {
     }, [])
 
     return (
-        <div className="relative flex h-6 items-end border-b border-gray-300 select-none print:hidden">
-            <div
-                ref={rulerRef}
-                id="ruler-container"
-                className="relative mx-auto h-full w-full max-w-[816px]"
-            >
+        <div className="relative mx-auto flex h-6 w-[816px] items-end border-b border-gray-300 select-none print:hidden">
+            <div ref={rulerRef} className="relative h-full w-full">
                 <MarginIndicator
                     offset={leftMargin}
                     isLeft={true}
