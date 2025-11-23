@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { RULER_CONFIG } from '@ruler/constants'
+import { RULER_CONFIG } from '@ruler/ruler-config'
 
 interface MarkerProps {
     marker: number

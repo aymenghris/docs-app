@@ -1,7 +1,7 @@
 import React, { FC, useCallback, useEffect, useRef, useState } from 'react'
-import { RULER_CONFIG } from '@ruler/constants'
 import { MarginIndicator } from '@ruler/MarginIndicator'
 import { Marker } from '@ruler/Marker'
+import { RULER_CONFIG } from '@ruler/ruler-config'
 
 interface RulerProps {
     leftMargin?: number
