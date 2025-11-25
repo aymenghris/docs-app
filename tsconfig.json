@@ -20,6 +20,7 @@
         ],
         "paths": {
             "@/*": ["./*"],
+            "@home/*": ["./app/(home)/*"],
             "@toolbar/*": ["./app/documents/[documentId]/toolbar/*"],
             "@ruler/*": ["./app/documents/[documentId]/ruler/*"],
             "@navbar/*": ["./app/documents/[documentId]/navbar/*"]
