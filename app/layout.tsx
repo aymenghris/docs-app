@@ -1,4 +1,5 @@
 import { FC, ReactNode } from 'react'
+import { ConvexClientProvider } from '@/components/ConvexClientProvider'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { NuqsAdapter } from 'nuqs/adapters/next/app'
@@ -20,7 +21,9 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => {
     return (
         <html lang="en">
             <body className={inter.className}>
-                <NuqsAdapter>{children}</NuqsAdapter>
+                <NuqsAdapter>
+                    <ConvexClientProvider>{children}</ConvexClientProvider>
+                </NuqsAdapter>
             </body>
         </html>
     )
