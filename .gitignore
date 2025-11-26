@@ -45,3 +45,4 @@ next-env.d.ts
 
 /.backup/
 /app/test/
+/convex/_generated/

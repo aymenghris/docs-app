@@ -23,7 +23,8 @@
             "@home/*": ["./app/(home)/*"],
             "@toolbar/*": ["./app/documents/[documentId]/toolbar/*"],
             "@ruler/*": ["./app/documents/[documentId]/ruler/*"],
-            "@navbar/*": ["./app/documents/[documentId]/navbar/*"]
+            "@navbar/*": ["./app/documents/[documentId]/navbar/*"],
+            "@convex/*": ["./convex/*"]
         }
     },
     "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
