@@ -1,4 +1,5 @@
 import { Logo } from '@/components/Logo'
+import { UserButton } from '@clerk/nextjs'
 import { SearchInput } from '@home/SearchInput'
 
 export const Navbar = () => {
@@ -9,7 +10,7 @@ export const Navbar = () => {
                 <h3 className="text-xl">Docs</h3>
             </div>
             <SearchInput />
-            <div /> {/* For Avatar to login and logout*/}
+            <UserButton />
         </nav>
     )
 }
