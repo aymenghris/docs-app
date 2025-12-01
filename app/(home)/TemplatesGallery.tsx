@@ -8,10 +8,25 @@ import {
     CarouselPrevious,
 } from '@/components/ui/carousel'
 import { cn } from '@/lib/utils'
+import { useConvexMutation } from '@convex-dev/react-query'
+import { api } from '@convex/_generated/api'
 import { templates } from '@home/templates'
+import { useMutation } from '@tanstack/react-query'
+import { useRouter } from 'next/navigation'
 
 export const TemplatesGallery = () => {
-    const isCreating = false
+    const router = useRouter()
+
+    const { mutate: create, isPending: isCreating } = useMutation({
+        mutationFn: useConvexMutation(api.documents.create),
+        onSuccess: (documentId) => {
+            void router.push(`/documents/${documentId}`)
+        },
+    })
+
+    const handleCreateDocument = (title: string, initialContent: string) => {
+        create({ title, initialContent })
+    }
 
     return (
         <div className="bg-[#f1f3f4]">
@@ -44,7 +59,12 @@ export const TemplatesGallery = () => {
                                 >
                                     <button
                                         disabled={isCreating}
-                                        onClick={undefined}
+                                        onClick={() =>
+                                            handleCreateDocument(
+                                                template.title,
+                                                '',
+                                            )
+                                        }
                                         style={{
                                             backgroundImage: `url(${template.imageSrc})`,
                                         }}
