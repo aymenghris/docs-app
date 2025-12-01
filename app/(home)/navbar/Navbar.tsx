@@ -1,6 +1,6 @@
 import { Logo } from '@/components/Logo'
 import { UserButton } from '@clerk/nextjs'
-import { SearchInput } from '@home/SearchInput'
+import { SearchInput } from '@home/navbar/SearchInput'
 
 export const Navbar = () => {
     return (

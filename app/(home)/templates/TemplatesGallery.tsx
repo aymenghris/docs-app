@@ -10,7 +10,7 @@ import {
 import { cn } from '@/lib/utils'
 import { useConvexMutation } from '@convex-dev/react-query'
 import { api } from '@convex/_generated/api'
-import { templates } from '@home/templates'
+import { templates } from '@home/templates/templates'
 import { useMutation } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
 
