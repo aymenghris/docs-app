@@ -3,16 +3,17 @@ import { usePaginatedQuery } from 'convex/react'
 
 interface UsePaginatedDocumentsOptions {
     initialNumItems?: number
+    searchQuery: string
 }
 
 export const usePaginatedDocuments = (
-    options: UsePaginatedDocumentsOptions = {},
+    options: UsePaginatedDocumentsOptions,
 ) => {
-    const { initialNumItems = 5 } = options
+    const { initialNumItems = 5, searchQuery } = options
 
     const { results, status, loadMore } = usePaginatedQuery(
         api.documents.list,
-        {},
+        { searchQuery },
         { initialNumItems },
     )
 
