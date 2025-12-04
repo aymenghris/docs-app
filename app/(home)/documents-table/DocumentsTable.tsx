@@ -1,11 +1,10 @@
 import { FC } from 'react'
 import { LoadingState } from '@/components/LoadingState'
+import { Button } from '@/components/ui/button'
 import {
     Table,
     TableBody,
-    TableCaption,
     TableCell,
-    TableFooter,
     TableHead,
     TableHeader,
     TableRow,
@@ -19,6 +18,7 @@ interface DocumentsTableProps {
     loadMore: (numItems: number) => void
     status: PaginationStatus
     isLoading: boolean
+    canLoadMore: boolean
 }
 
 const TABLE_HEADERS = ['Name', 'Shared', 'Created At'] as const
@@ -36,7 +36,6 @@ const EmptyState = () => (
 
 export const DocumentsTable: FC<DocumentsTableProps> = ({
     documents,
-    // TODO: Implement load more button
     loadMore,
     status,
     isLoading,
@@ -72,6 +71,17 @@ export const DocumentsTable: FC<DocumentsTableProps> = ({
                     )}
                 </TableBody>
             </Table>
+
+            {canLoadMore && (
+                <Button
+                    variant="outline"
+                    size="sm"
+                    className="mx-auto"
+                    onClick={() => loadMore(5)}
+                >
+                    Load More
+                </Button>
+            )}
         </div>
     )
 }

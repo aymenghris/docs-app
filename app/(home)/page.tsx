@@ -6,7 +6,8 @@ import { Navbar } from '@home/navbar/Navbar'
 import { TemplatesGallery } from '@home/templates/TemplatesGallery'
 
 const Home = () => {
-    const { results, status, loadMore, isLoading } = usePaginatedDocuments()
+    const { results, status, loadMore, isLoading, canLoadMore } =
+        usePaginatedDocuments()
 
     return (
         <div className="flex min-h-screen flex-col">
@@ -20,6 +21,7 @@ const Home = () => {
                     loadMore={loadMore}
                     status={status}
                     isLoading={isLoading}
+                    canLoadMore={canLoadMore}
                 />
             </div>
         </div>
