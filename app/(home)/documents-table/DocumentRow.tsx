@@ -1,9 +1,10 @@
 import { FC } from 'react'
 import { TableCell, TableRow } from '@/components/ui/table'
 import { Doc } from '@convex/_generated/dataModel'
-import { DocumentMenu } from '@home/documents-table/DocumentMenu'
+import { DocumentMenu } from '@home/documents-table/document-menu/DocumentMenu'
 import { format } from 'date-fns/format'
 import { Building2Icon, CircleUserIcon } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 import { SiGoogledocs } from 'react-icons/si'
 
 interface DocumentRowProps {
@@ -11,11 +12,16 @@ interface DocumentRowProps {
 }
 
 export const DocumentRow: FC<DocumentRowProps> = ({ document }) => {
+    const router = useRouter()
+
     const isOrganizationOwned = Boolean(document.organizationId)
     const OwnerIcon = isOrganizationOwned ? Building2Icon : CircleUserIcon
 
     return (
-        <TableRow className="cursor-pointer">
+        <TableRow
+            className="cursor-pointer"
+            onClick={() => router.push(`/documents/${document._id}`)}
+        >
             <TableCell className="font-medium md:w-[45%]">
                 <SiGoogledocs className="mr-6 inline-block size-6 fill-blue-500" />
                 {document.title}
