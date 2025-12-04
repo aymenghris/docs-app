@@ -13,16 +13,10 @@ import {
 } from '@/components/ui/alert-dialog'
 import { useConvexMutation } from '@convex-dev/react-query'
 import { api } from '@convex/_generated/api'
-import { DocumentId } from '@home/documents-table/types'
 import { useMutation } from '@tanstack/react-query'
+import { DocumentDialogProps } from './types'
 
-interface DeleteDocumentDialogProps {
-    documentId: DocumentId
-    open: boolean
-    onOpenChange: (open: boolean) => void
-}
-
-export const DeleteDocumentDialog: FC<DeleteDocumentDialogProps> = ({
+export const DeleteDocumentDialog: FC<DocumentDialogProps> = ({
     documentId,
     open,
     onOpenChange,
@@ -44,7 +38,7 @@ export const DeleteDocumentDialog: FC<DeleteDocumentDialogProps> = ({
                 <AlertDialogFooter>
                     <AlertDialogAction
                         disabled={isDeleting}
-                        onClick={() => mutate({ documentId })}
+                        onClick={() => mutate({ id: documentId })}
                     >
                         Delete
                     </AlertDialogAction>
