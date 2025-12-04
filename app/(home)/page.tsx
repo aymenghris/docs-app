@@ -1,13 +1,16 @@
 'use client'
 
 import { usePaginatedDocuments } from '@/hooks/usePaginatedDocuments'
+import { useQueryParam } from '@/hooks/useQueryParam'
 import { DocumentsTable } from '@home/documents-table/DocumentsTable'
 import { Navbar } from '@home/navbar/Navbar'
 import { TemplatesGallery } from '@home/templates/TemplatesGallery'
 
 const Home = () => {
+    const [searchQuery] = useQueryParam('search')
+
     const { results, status, loadMore, isLoading, canLoadMore } =
-        usePaginatedDocuments()
+        usePaginatedDocuments({ searchQuery })
 
     return (
         <div className="flex min-h-screen flex-col">
