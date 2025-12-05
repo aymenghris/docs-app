@@ -7,12 +7,12 @@ import {
     RemoveFormattingIcon,
 } from 'lucide-react'
 
-export const AddCommentButton = () => (
+export const AddCommentButton: FC<ButtonWrapper> = ({ editor }) => (
     <ToolbarButton
         label="Comment"
         icon={MessageSquarePlusIcon}
-        onClick={() => console.log('Comment')}
-        isActive={false} // TODO: Implement this functionality
+        onClick={() => editor?.chain().focus().addPendingComment().run}
+        isActive={editor.isActive('liveblocksCommentMark')}
     />
 )
 
