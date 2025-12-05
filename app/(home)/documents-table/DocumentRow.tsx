@@ -18,10 +18,16 @@ export const DocumentRow: FC<DocumentRowProps> = ({ document }) => {
     const OwnerIcon = isOrganizationOwned ? Building2Icon : CircleUserIcon
 
     const handleRowClick = (e: MouseEvent) => {
-        // Only run if the parent itself was clicked, not a child element
-        // event.target → the actual element that was clicked (could be a child)
-        // event.currentTarget → the element that the handler is attached to
-        if (e.target !== e.currentTarget) return
+        // Prevent navigation when clicking on interactive elements like buttons, menus, or dialogs
+        // This allows the row to be clickable while preserving the functionality of nested interactive components
+        // Uses closest() to check if the clicked element is within any interactive container
+        // why exactly [role="menuitem"]? : Radix UI automatically assigns this ARIA role for accessibility
+
+        const target = e.target as HTMLElement
+        if (target.closest('button') || target.closest('[role="menuitem"]')) {
+            return
+        }
+
         router.push(`/documents/${document._id}`)
     }
 
