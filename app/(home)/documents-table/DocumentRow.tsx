@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, MouseEvent } from 'react'
 import { TableCell, TableRow } from '@/components/ui/table'
 import { Doc } from '@convex/_generated/dataModel'
 import { DocumentMenu } from '@home/documents-table/document-menu/DocumentMenu'
@@ -17,11 +17,16 @@ export const DocumentRow: FC<DocumentRowProps> = ({ document }) => {
     const isOrganizationOwned = Boolean(document.organizationId)
     const OwnerIcon = isOrganizationOwned ? Building2Icon : CircleUserIcon
 
+    const handleRowClick = (e: MouseEvent) => {
+        // Only run if the parent itself was clicked, not a child element
+        // event.target → the actual element that was clicked (could be a child)
+        // event.currentTarget → the element that the handler is attached to
+        if (e.target !== e.currentTarget) return
+        router.push(`/documents/${document._id}`)
+    }
+
     return (
-        <TableRow
-            className="cursor-pointer"
-            onClick={() => router.push(`/documents/${document._id}`)}
-        >
+        <TableRow className="cursor-pointer" onClick={handleRowClick}>
             <TableCell className="font-medium md:w-[45%]">
                 <SiGoogledocs className="mr-6 inline-block size-6 fill-blue-500" />
                 {document.title}
