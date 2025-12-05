@@ -11,10 +11,12 @@ export const create = mutation({
     },
     handler: async (ctx, args) => {
         const user = await requireUser(ctx)
+        const { organization_id } = user
 
         return await ctx.db.insert('documents', {
             title: args.title ?? 'Untitled Document',
             ownerId: user.subject,
+            organizationId: organization_id || undefined,
             initialContent: args.initialContent,
         })
     },
@@ -28,12 +30,35 @@ export const list = query({
     handler: async (ctx, args) => {
         const user = await requireUser(ctx)
         const { searchQuery, paginationOpts } = args
+        const { organization_id } = user
 
+        // Search within organization or personal documents
         if (searchQuery) {
+            if (organization_id) {
+                return ctx.db
+                    .query('documents')
+                    .withSearchIndex('search_title', (q) =>
+                        q
+                            .search('title', searchQuery)
+                            .eq('organizationId', organization_id),
+                    )
+                    .paginate(paginationOpts)
+            }
+
             return ctx.db
                 .query('documents')
                 .withSearchIndex('search_title', (q) =>
                     q.search('title', searchQuery).eq('ownerId', user.subject),
+                )
+                .paginate(paginationOpts)
+        }
+
+        // List all documents (no search)
+        if (organization_id) {
+            return ctx.db
+                .query('documents')
+                .withIndex('by_organization_id', (q) =>
+                    q.eq('organizationId', organization_id),
                 )
                 .paginate(paginationOpts)
         }
