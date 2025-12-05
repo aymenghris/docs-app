@@ -47,7 +47,7 @@ export const RenameDocumentDialog: FC<RenameDocumentDialogProps> = ({
 
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
-            <DialogContent>
+            <DialogContent onClick={(e) => e.stopPropagation()}>
                 <form onSubmit={handleSubmit}>
                     <DialogHeader>
                         <DialogTitle>Rename Document</DialogTitle>
