@@ -1,8 +1,15 @@
 import { FC } from 'react'
 import { cn } from '@/lib/utils'
-import type { ToolbarButton as ButtonProps } from '@toolbar/utils/types'
+import { LucideIcon } from 'lucide-react'
 
-export const ToolbarButton: FC<ButtonProps> = ({
+export interface ToolbarButton {
+    label: string
+    icon: LucideIcon
+    onClick: () => void
+    isActive?: boolean
+}
+
+export const ToolbarButton: FC<ToolbarButton> = ({
     onClick,
     isActive,
     icon: Icon,
