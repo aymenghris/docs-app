@@ -1,4 +1,5 @@
 import { FC } from 'react'
+import { Room } from '@/app/documents/[documentId]/collaboration/Room'
 import { Navbar } from '@navbar/Navbar'
 import { Toolbar } from '@toolbar/Toolbar'
 import { Editor } from './Editor'
@@ -18,7 +19,9 @@ const DocumentIdPage: FC<DocumentIdPageProps> = async ({ params }) => {
                 <Toolbar />
             </div>
             <div className="pt-[114px] print:pt-0">
-                <Editor />
+                <Room>
+                    <Editor />
+                </Room>
             </div>
         </div>
     )

@@ -1,9 +1,11 @@
 'use client'
 
+import { Threads } from '@/app/documents/[documentId]/collaboration/Threads'
 import { Ruler } from '@/app/documents/[documentId]/ruler/Ruler'
 import { FontSizeExtension } from '@/extensions/font-size'
 import { LineHeightExtension } from '@/extensions/line-height'
 import { useEditorStore } from '@/store/use-editor'
+import { useLiveblocksExtension } from '@liveblocks/react-tiptap'
 import Highlight from '@tiptap/extension-highlight'
 import { TaskItem, TaskList } from '@tiptap/extension-list'
 import { TableKit } from '@tiptap/extension-table'
@@ -14,6 +16,7 @@ import StarterKit from '@tiptap/starter-kit'
 import ImageResize from 'tiptap-extension-resize-image'
 
 export const Editor = () => {
+    const liveblocks = useLiveblocksExtension()
     const { setEditor } = useEditorStore()
 
     const handleEditor = ({ editor }: { editor: any }) => {
@@ -46,10 +49,13 @@ export const Editor = () => {
             }),
             ImageResize,
             LineHeightExtension,
+            liveblocks,
             StarterKit.configure({
                 link: {
                     openOnClick: false,
                 },
+                // The Liveblocks extension comes with its own history handling
+                undoRedo: false,
             }),
             TaskList,
             TaskItem.configure({
@@ -63,7 +69,6 @@ export const Editor = () => {
             }),
             TextStyle,
         ],
-        content: '<p>Hello World 🔥</p>',
         immediatelyRender: false,
     })
 
@@ -72,6 +77,7 @@ export const Editor = () => {
             <Ruler />
             <div className="mx-auto flex w-[816px] min-w-max justify-center py-4 print:w-full print:min-w-0 print:py-0">
                 <EditorContent editor={editor} />
+                <Threads editor={editor} />
             </div>
         </div>
     )
