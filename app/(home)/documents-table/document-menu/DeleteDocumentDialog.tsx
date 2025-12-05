@@ -14,6 +14,7 @@ import {
 import { useConvexMutation } from '@convex-dev/react-query'
 import { api } from '@convex/_generated/api'
 import { useMutation } from '@tanstack/react-query'
+import { toast } from 'sonner'
 import { DocumentDialogProps } from './types'
 
 export const DeleteDocumentDialog: FC<DocumentDialogProps> = ({
@@ -23,6 +24,8 @@ export const DeleteDocumentDialog: FC<DocumentDialogProps> = ({
 }) => {
     const { mutate, isPending: isDeleting } = useMutation({
         mutationFn: useConvexMutation(api.documents.deleteById),
+        onSuccess: () => toast.success('Document deleted successfully'),
+        onError: () => toast.error('Failed to delete document'),
     })
 
     return (

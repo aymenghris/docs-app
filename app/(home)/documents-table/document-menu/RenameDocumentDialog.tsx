@@ -15,6 +15,7 @@ import { Input } from '@/components/ui/input'
 import { useConvexMutation } from '@convex-dev/react-query'
 import { api } from '@convex/_generated/api'
 import { useMutation } from '@tanstack/react-query'
+import { toast } from 'sonner'
 import { DocumentDialogProps } from './types'
 
 interface RenameDocumentDialogProps extends DocumentDialogProps {
@@ -31,7 +32,9 @@ export const RenameDocumentDialog: FC<RenameDocumentDialogProps> = ({
         mutationFn: useConvexMutation(api.documents.renameById),
         onSuccess: () => {
             onOpenChange(false)
+            toast.success('Document renamed successfully')
         },
+        onError: () => toast.error('Failed to rename document'),
     })
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {

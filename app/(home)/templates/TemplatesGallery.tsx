@@ -13,6 +13,7 @@ import { api } from '@convex/_generated/api'
 import { templates } from '@home/templates/templates'
 import { useMutation } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
+import { toast } from 'sonner'
 
 export const TemplatesGallery = () => {
     const router = useRouter()
@@ -20,6 +21,7 @@ export const TemplatesGallery = () => {
     const { mutate: create, isPending: isCreating } = useMutation({
         mutationFn: useConvexMutation(api.documents.create),
         onSuccess: (documentId) => {
+            toast.success('Document created successfully')
             void router.push(`/documents/${documentId}`)
         },
     })
