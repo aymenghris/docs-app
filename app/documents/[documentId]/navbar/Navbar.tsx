@@ -1,3 +1,4 @@
+import { AuthenticationControls } from '@/components/AuthenticationControls'
 import { Logo } from '@/components/Logo'
 import { DocumentInput } from '@navbar/DocumentInput'
 import { MenuBar } from '@navbar/MenuBar'
@@ -12,6 +13,7 @@ export const Navbar = () => {
                     <MenuBar />
                 </div>
             </div>
+            <AuthenticationControls />
         </nav>
     )
 }

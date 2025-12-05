@@ -1,5 +1,5 @@
+import { AuthenticationControls } from '@/components/AuthenticationControls'
 import { Logo } from '@/components/Logo'
-import { OrganizationSwitcher, UserButton } from '@clerk/nextjs'
 import { SearchInput } from '@home/navbar/SearchInput'
 
 export const Navbar = () => {
@@ -10,10 +10,7 @@ export const Navbar = () => {
                 <h3 className="text-xl">Docs</h3>
             </div>
             <SearchInput />
-            <div className="flex items-center gap-3 pl-6">
-                <OrganizationSwitcher />
-                <UserButton />
-            </div>
+            <AuthenticationControls />
         </nav>
     )
 }
