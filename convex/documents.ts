@@ -70,6 +70,13 @@ export const list = query({
     },
 })
 
+export const getById = query({
+    args: { id: v.id('documents') },
+    handler: async (ctx, args) => {
+        return await ctx.db.get(args.id)
+    },
+})
+
 export const deleteById = mutation({
     args: { id: v.id('documents') },
     handler: async (ctx, args) => {
