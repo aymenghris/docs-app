@@ -21,6 +21,7 @@
         "paths": {
             "@/*": ["./*"],
             "@home/*": ["./app/(home)/*"],
+            "@editor/*": ["./app/documents/[documentId]/*"],
             "@toolbar/*": ["./app/documents/[documentId]/toolbar/*"],
             "@ruler/*": ["./app/documents/[documentId]/ruler/*"],
             "@navbar/*": ["./app/documents/[documentId]/navbar/*"],

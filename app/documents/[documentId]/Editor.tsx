@@ -1,11 +1,11 @@
 'use client'
 
-import { Threads } from '@/app/documents/[documentId]/collaboration/Threads'
-import { Ruler } from '@/app/documents/[documentId]/ruler/Ruler'
 import { FontSizeExtension } from '@/extensions/font-size'
 import { LineHeightExtension } from '@/extensions/line-height'
 import { useEditorStore } from '@/store/use-editor'
+import { Threads } from '@editor/collaboration/Threads'
 import { useLiveblocksExtension } from '@liveblocks/react-tiptap'
+import { Ruler } from '@ruler/Ruler'
 import Highlight from '@tiptap/extension-highlight'
 import { TaskItem, TaskList } from '@tiptap/extension-list'
 import { TableKit } from '@tiptap/extension-table'
