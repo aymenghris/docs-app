@@ -1,6 +1,7 @@
 'use client'
 
 import { FC, ReactNode } from 'react'
+import { FullScreenLoader } from '@/components/FullScreenLoader'
 import {
     ClientSideSuspense,
     LiveblocksProvider,
@@ -16,14 +17,14 @@ interface RoomProps {
     children: ReactNode
 }
 
-const LIVEBLOCKS_PUBLIC_KEY = process.env.NEXT_PUBLIC_LIVEBLOCKS_PUBLIC_KEY!
-
 export const Room: FC<RoomProps> = ({ children }) => {
     const param = useParams<Param>()
     return (
-        <LiveblocksProvider publicApiKey={LIVEBLOCKS_PUBLIC_KEY}>
+        <LiveblocksProvider authEndpoint="/api/liveblocks-auth" throttle={16}>
             <RoomProvider id={param.documentId}>
-                <ClientSideSuspense fallback={<div>Loading…</div>}>
+                <ClientSideSuspense
+                    fallback={<FullScreenLoader label="Loading Document..." />}
+                >
                     {children}
                 </ClientSideSuspense>
             </RoomProvider>
