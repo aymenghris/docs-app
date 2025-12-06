@@ -12,6 +12,7 @@
     "@clerk/nextjs": "^6.35.5",
     "@convex-dev/react-query": "^0.1.0",
     "@liveblocks/client": "^3.11.0",
+    "@liveblocks/node": "^3.11.0",
     "@liveblocks/react": "^3.11.0",
     "@liveblocks/react-tiptap": "^3.11.0",
     "@liveblocks/react-ui": "^3.11.0",
