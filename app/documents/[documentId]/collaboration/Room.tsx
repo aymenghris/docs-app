@@ -2,6 +2,12 @@
 
 import { FC, ReactNode } from 'react'
 import { FullScreenLoader } from '@/components/FullScreenLoader'
+import { useUsers } from '@/hooks/useUsers'
+import { LIVEBLOCKS_CONFIG } from '@/lib/liveblocks/config'
+import {
+    createMentionResolver,
+    createUserResolver,
+} from '@/lib/liveblocks/resolvers'
 import {
     ClientSideSuspense,
     LiveblocksProvider,
@@ -9,21 +15,24 @@ import {
 } from '@liveblocks/react/suspense'
 import { useParams } from 'next/navigation'
 
-type Param = {
-    documentId: string
-}
-
 interface RoomProps {
     children: ReactNode
 }
 
 export const Room: FC<RoomProps> = ({ children }) => {
-    const param = useParams<Param>()
+    const param = useParams<{ documentId: string }>()
+    const { users } = useUsers()
+
     return (
-        <LiveblocksProvider authEndpoint="/api/liveblocks-auth" throttle={16}>
+        <LiveblocksProvider
+            {...LIVEBLOCKS_CONFIG}
+            resolveUsers={createUserResolver(users)}
+            resolveMentionSuggestions={createMentionResolver(users)}
+            resolveRoomsInfo={() => []}
+        >
             <RoomProvider id={param.documentId}>
                 <ClientSideSuspense
-                    fallback={<FullScreenLoader label="Loading Document..." />}
+                    fallback={<FullScreenLoader label="Room Loading..." />}
                 >
                     {children}
                 </ClientSideSuspense>
