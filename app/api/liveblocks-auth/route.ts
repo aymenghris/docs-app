@@ -1,4 +1,4 @@
-import { CustomSessionClaims } from '@/app/api/liveblocks-auth/types'
+import { CustomSessionClaims } from '@/types/clerk'
 import { auth, currentUser } from '@clerk/nextjs/server'
 import { api } from '@convex/_generated/api'
 import { Liveblocks } from '@liveblocks/node'
@@ -47,7 +47,10 @@ export const POST = async (req: NextRequest) => {
 
     const session = liveblocks.prepareSession(user.id, {
         userInfo: {
-            name: user.firstName ?? 'Anonymous',
+            name:
+                user.firstName ??
+                user.primaryEmailAddress?.emailAddress ??
+                'Anonymous',
             avatar: user.imageUrl,
         },
     })
