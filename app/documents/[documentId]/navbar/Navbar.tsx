@@ -1,5 +1,6 @@
 import { AuthenticationControls } from '@/components/AuthenticationControls'
 import { Logo } from '@/components/Logo'
+import { Avatars } from '@navbar/Avatars'
 import { DocumentInput } from '@navbar/DocumentInput'
 import { MenuBar } from '@navbar/MenuBar'
 
@@ -13,7 +14,10 @@ export const Navbar = () => {
                     <MenuBar />
                 </div>
             </div>
-            <AuthenticationControls />
+            <div className="flex">
+                <Avatars />
+                <AuthenticationControls />
+            </div>
         </nav>
     )
 }
