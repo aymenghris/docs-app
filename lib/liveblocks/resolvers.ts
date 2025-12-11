@@ -1,4 +1,6 @@
 import { User } from '@/types'
+import { Id } from '@convex/_generated/dataModel'
+import { getDocuments } from '@editor/collaboration/actions'
 
 export const createUserResolver = (users: User[]) => {
     return ({ userIds }: { userIds: string[] }) => {
@@ -20,4 +22,11 @@ export const createMentionResolver = (users: User[]) => {
             .filter((user) => user.name.toLowerCase().includes(searchTerm))
             .map((user) => user.id)
     }
+}
+
+export const resolveRoomsInfo = async ({ roomIds }: { roomIds: string[] }) => {
+    const documents = await getDocuments(roomIds as Id<'documents'>[])
+    return documents.map((document) => ({
+        name: document.name,
+    }))
 }
