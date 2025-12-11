@@ -7,6 +7,7 @@ import { LIVEBLOCKS_CONFIG } from '@/lib/liveblocks/config'
 import {
     createMentionResolver,
     createUserResolver,
+    resolveRoomsInfo,
 } from '@/lib/liveblocks/resolvers'
 import {
     ClientSideSuspense,
@@ -22,13 +23,15 @@ interface RoomProps {
 export const Room: FC<RoomProps> = ({ children }) => {
     const param = useParams<{ documentId: string }>()
     const { users } = useUsers()
+    const { throttle, authEndpoint } = LIVEBLOCKS_CONFIG
 
     return (
         <LiveblocksProvider
-            {...LIVEBLOCKS_CONFIG}
+            throttle={throttle}
+            authEndpoint={authEndpoint(param.documentId)}
             resolveUsers={createUserResolver(users)}
             resolveMentionSuggestions={createMentionResolver(users)}
-            resolveRoomsInfo={() => []}
+            resolveRoomsInfo={resolveRoomsInfo}
         >
             <RoomProvider id={param.documentId}>
                 <ClientSideSuspense

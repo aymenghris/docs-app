@@ -1,8 +1,7 @@
 import { requireUser, verifyDocumentAuthorization } from '@convex/utils'
 import { paginationOptsValidator } from 'convex/server'
 import { v } from 'convex/values'
-import { query } from './_generated/server'
-import { mutation } from './_generated/server'
+import { mutation, query } from './_generated/server'
 
 export const create = mutation({
     args: {
@@ -74,6 +73,21 @@ export const getById = query({
     args: { id: v.id('documents') },
     handler: async (ctx, args) => {
         return await ctx.db.get(args.id)
+    },
+})
+
+export const getByIds = query({
+    args: { ids: v.array(v.id('documents')) },
+    handler: async (ctx, { ids }) => {
+        // Promise.all - Fetches all documents in parallel instead of sequentially
+        return await Promise.all(
+            ids.map(async (id) => {
+                const document = await ctx.db.get(id)
+                return document
+                    ? { id: document._id, name: document.title }
+                    : { id, name: '[Removed]' }
+            }),
+        )
     },
 })
 
