@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { getUsers } from '@editor/actions'
+import { getUsers } from '@editor/collaboration/actions'
 import { useQuery } from '@tanstack/react-query'
 import { toast } from 'sonner'
 
