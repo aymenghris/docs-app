@@ -1,7 +1,7 @@
 'use client'
 
 import { SeparatedContainer } from '@/components/SeparatedContainer'
-import { useEditorStore } from '@/store/use-editor'
+import { useEditorStore } from '@/stores/use-editor-store'
 import { sectionsButtons } from '@toolbar/buttons'
 
 export const Toolbar = () => {

@@ -5,7 +5,7 @@ import {
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { cn } from '@/lib/utils'
-import { useEditorStore } from '@/store/use-editor'
+import { useEditorStore } from '@/stores/use-editor-store'
 import { ChevronDownIcon } from 'lucide-react'
 
 export const FontFamilyButton = () => {
@@ -24,10 +24,10 @@ export const FontFamilyButton = () => {
             <DropdownMenuTrigger asChild>
                 <button
                     className={cn(
-                        'flex items-center justify-between shrink-0',
+                        'flex shrink-0 items-center justify-between',
                         'h-7 w-[120px] px-1.5',
                         'text-sm',
-                        'rounded-sm   overflow-hidden',
+                        'overflow-hidden rounded-sm',
                         'hover:bg-neutral-200/80',
                     )}
                 >
@@ -35,10 +35,10 @@ export const FontFamilyButton = () => {
                         {editor?.getAttributes('textStyle')?.fontFamily ||
                             'Arial'}
                     </span>
-                    <ChevronDownIcon className="size-4 ml-2 shrink-0" />
+                    <ChevronDownIcon className="ml-2 size-4 shrink-0" />
                 </button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="p-1 flex flex-col gap-y-1">
+            <DropdownMenuContent className="flex flex-col gap-y-1 p-1">
                 {fonts.map(({ label, value }) => (
                     <DropdownMenuItem
                         key={value}
@@ -46,7 +46,7 @@ export const FontFamilyButton = () => {
                             editor?.chain().focus().setFontFamily(value).run()
                         }
                         className={cn(
-                            'flex items-center gap-x-2 px-2 py-1 rounded-sm hover:bg-neutral-200/80',
+                            'flex items-center gap-x-2 rounded-sm px-2 py-1 hover:bg-neutral-200/80',
                             editor?.getAttributes('fontStyle').fontFamily ===
                                 value && 'bg-neutral-200',
                         )}

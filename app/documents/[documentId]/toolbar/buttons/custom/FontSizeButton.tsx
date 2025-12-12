@@ -1,6 +1,6 @@
 import { ChangeEvent, KeyboardEvent, useState } from 'react'
 import { cn } from '@/lib/utils'
-import { useEditorStore } from '@/store/use-editor'
+import { useEditorStore } from '@/stores/use-editor-store'
 import { MinusIcon, PlusIcon } from 'lucide-react'
 
 export const FontSizeButton = () => {

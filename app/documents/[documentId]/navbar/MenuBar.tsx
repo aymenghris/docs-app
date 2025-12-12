@@ -13,7 +13,7 @@ import {
     MenubarSubTrigger,
     MenubarTrigger,
 } from '@/components/ui/menubar'
-import { useEditorStore } from '@/store/use-editor'
+import { useEditorStore } from '@/stores/use-editor-store'
 import { getMenuItems } from '@navbar/menu-items'
 import { MenuItem } from '@navbar/menu-items/types'
 

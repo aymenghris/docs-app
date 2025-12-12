@@ -3,7 +3,7 @@ import {
     DropdownMenuContent,
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-import { useEditorStore } from '@/store/use-editor'
+import { useEditorStore } from '@/stores/use-editor-store'
 import { ColorResult, SketchPicker } from 'react-color'
 
 export const TextColorButton = () => {

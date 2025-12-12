@@ -5,7 +5,7 @@ import {
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { cn } from '@/lib/utils'
-import { useEditorStore } from '@/store/use-editor'
+import { useEditorStore } from '@/stores/use-editor-store'
 import type { Level } from '@tiptap/extension-heading'
 import { ChevronDownIcon } from 'lucide-react'
 
