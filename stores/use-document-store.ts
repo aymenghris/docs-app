@@ -1,4 +1,3 @@
-// stores/use-document-store.ts
 import { Doc } from '@/convex/_generated/dataModel'
 import { create } from 'zustand'
 

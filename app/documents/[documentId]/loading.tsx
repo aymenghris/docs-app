@@ -1,5 +1,5 @@
 import { FullScreenLoader } from '@/components/FullScreenLoader'
 
-export const LoadingPage = () => (
-    <FullScreenLoader label="Document Loading..." />
-)
+const LoadingPage = () => <FullScreenLoader label="Document Loading..." />
+
+export default LoadingPage
