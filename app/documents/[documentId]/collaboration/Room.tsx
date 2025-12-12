@@ -33,7 +33,10 @@ export const Room: FC<RoomProps> = ({ children }) => {
             resolveMentionSuggestions={createMentionResolver(users)}
             resolveRoomsInfo={resolveRoomsInfo}
         >
-            <RoomProvider id={param.documentId}>
+            <RoomProvider
+                id={param.documentId}
+                initialStorage={{ rightMargin: 56, leftMargin: 56 }}
+            >
                 <ClientSideSuspense
                     fallback={<FullScreenLoader label="Room Loading..." />}
                 >
