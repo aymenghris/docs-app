@@ -1,5 +1,4 @@
-import { MenuItem } from '@navbar/menu-items/types'
-import type { Editor } from '@tiptap/react'
+import { EditorDocumentArgs, MenuItem } from '@navbar/menu-items/types'
 import {
     FileIcon,
     FileJsonIcon,
@@ -12,7 +11,10 @@ import {
 } from 'lucide-react'
 import { BsFilePdf } from 'react-icons/bs'
 
-export const getFileMenu = (editor: Editor | null): MenuItem => {
+export const getFileMenu = ({
+    editor,
+    document: documentInfo,
+}: EditorDocumentArgs): MenuItem => {
     const onDownload = (blob: Blob, filename: string) => {
         const url = URL.createObjectURL(blob)
         const link = document.createElement('a')
@@ -38,7 +40,7 @@ export const getFileMenu = (editor: Editor | null): MenuItem => {
         const blob = new Blob([JSON.stringify(content)], {
             type: 'application/json',
         })
-        onDownload(blob, `document.json`) // TODO: Use document name
+        onDownload(blob, `${documentInfo?.title}.json`)
     }
 
     const handleSaveHTML = () => {
@@ -46,14 +48,14 @@ export const getFileMenu = (editor: Editor | null): MenuItem => {
         const content = editor.getHTML()
         const blob = new Blob([content], { type: 'text/html' })
 
-        onDownload(blob, `document.html`)
+        onDownload(blob, `${documentInfo?.title}.html`)
     }
 
     const handleSaveText = () => {
         if (!editor) return
         const content = editor.getText()
         const blob = new Blob([content], { type: 'text/plain' })
-        onDownload(blob, `document.txt`)
+        onDownload(blob, `${documentInfo?.title}.txt`)
     }
 
     return {
