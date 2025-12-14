@@ -13,6 +13,7 @@ import {
     MenubarSubTrigger,
     MenubarTrigger,
 } from '@/components/ui/menubar'
+import { useCreateDocument } from '@/hooks/useCreateDocument'
 import { useDocument } from '@/hooks/useDocument'
 import { useEditorStore } from '@/stores/use-editor-store'
 import { getMenuItems } from '@navbar/menu-items'
@@ -22,9 +23,16 @@ export const MenuBar = () => {
     const { editor } = useEditorStore()
     const document = useDocument()
 
+    const { create } = useCreateDocument()
+
     const menuItems = useMemo(
-        () => getMenuItems({ editor, document }),
-        [editor, document],
+        () =>
+            getMenuItems({
+                editor,
+                document,
+                onCreateDocument: create,
+            }),
+        [editor, document, create],
     )
 
     const renderMenuItem = (menuItem: MenuItem) => {

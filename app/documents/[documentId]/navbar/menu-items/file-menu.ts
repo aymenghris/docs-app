@@ -14,6 +14,7 @@ import { BsFilePdf } from 'react-icons/bs'
 export const getFileMenu = ({
     editor,
     document: documentInfo,
+    onCreateDocument: create,
 }: EditorDocumentArgs): MenuItem => {
     const onDownload = (blob: Blob, filename: string) => {
         const url = URL.createObjectURL(blob)
@@ -88,6 +89,10 @@ export const getFileMenu = ({
                 label: 'New Document',
                 icon: FilePlusIcon,
                 hasSeparator: true,
+                onClick: () => {
+                    console.log('New Document clicked!')
+                    create({ title: 'Untitled Document', initialContent: '' })
+                },
             },
             { label: 'Rename', icon: FilePenIcon },
             { label: 'Delete', icon: TrashIcon, hasSeparator: true },

@@ -15,4 +15,5 @@ export type MenuItem = {
 export interface EditorDocumentArgs {
     editor: Editor | null
     document: Doc<'documents'>
+    onCreateDocument: (args: { title: string; initialContent: string }) => void
 }

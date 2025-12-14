@@ -7,8 +7,9 @@ import { EditorDocumentArgs, MenuItem } from '@navbar/menu-items/types'
 export const getMenuItems = ({
     editor,
     document,
+    onCreateDocument,
 }: EditorDocumentArgs): MenuItem[] => [
-    getFileMenu({ editor, document }),
+    getFileMenu({ editor, document, onCreateDocument }),
     getEditMenu(editor),
     getInsertMenu(editor),
     getFormatMenu(editor),
