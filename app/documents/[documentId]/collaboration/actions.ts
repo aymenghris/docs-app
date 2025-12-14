@@ -16,7 +16,10 @@ export const getUsers = async () => {
     const { sessionClaims } = await auth()
     const claims = sessionClaims as CustomSessionClaims
 
-    if (!claims?.o?.id) return
+    if (!claims?.o?.id) {
+        console.error('No organization ID found in session claims')
+        return []
+    }
 
     const organizationId = claims.o.id
     const clerk = await clerkClient()
