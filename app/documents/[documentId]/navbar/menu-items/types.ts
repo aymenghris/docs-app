@@ -14,5 +14,5 @@ export type MenuItem = {
 
 export interface EditorDocumentArgs {
     editor: Editor | null
-    document: Doc<'documents'> | null | undefined
+    document: Doc<'documents'>
 }

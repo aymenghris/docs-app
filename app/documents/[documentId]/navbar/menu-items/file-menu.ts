@@ -40,7 +40,7 @@ export const getFileMenu = ({
         const blob = new Blob([JSON.stringify(content)], {
             type: 'application/json',
         })
-        onDownload(blob, `${documentInfo?.title}.json`)
+        onDownload(blob, `${documentInfo.title}.json`)
     }
 
     const handleSaveHTML = () => {
@@ -48,14 +48,14 @@ export const getFileMenu = ({
         const content = editor.getHTML()
         const blob = new Blob([content], { type: 'text/html' })
 
-        onDownload(blob, `${documentInfo?.title}.html`)
+        onDownload(blob, `${documentInfo.title}.html`)
     }
 
     const handleSaveText = () => {
         if (!editor) return
         const content = editor.getText()
         const blob = new Blob([content], { type: 'text/plain' })
-        onDownload(blob, `${documentInfo?.title}.txt`)
+        onDownload(blob, `${documentInfo.title}.txt`)
     }
 
     return {

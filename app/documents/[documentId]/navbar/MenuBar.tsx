@@ -13,14 +13,14 @@ import {
     MenubarSubTrigger,
     MenubarTrigger,
 } from '@/components/ui/menubar'
-import { useDocumentStore } from '@/stores/use-document-store'
+import { useDocument } from '@/hooks/useDocument'
 import { useEditorStore } from '@/stores/use-editor-store'
 import { getMenuItems } from '@navbar/menu-items'
 import { MenuItem } from '@navbar/menu-items/types'
 
 export const MenuBar = () => {
     const { editor } = useEditorStore()
-    const { document } = useDocumentStore()
+    const document = useDocument()
 
     const menuItems = useMemo(
         () => getMenuItems({ editor, document }),
