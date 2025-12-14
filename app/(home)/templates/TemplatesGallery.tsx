@@ -7,24 +7,12 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from '@/components/ui/carousel'
+import { useCreateDocument } from '@/hooks/useCreateDocument'
 import { cn } from '@/lib/utils'
-import { useConvexMutation } from '@convex-dev/react-query'
-import { api } from '@convex/_generated/api'
 import { templates } from '@home/templates/templates'
-import { useMutation } from '@tanstack/react-query'
-import { useRouter } from 'next/navigation'
-import { toast } from 'sonner'
 
 export const TemplatesGallery = () => {
-    const router = useRouter()
-
-    const { mutate: create, isPending: isCreating } = useMutation({
-        mutationFn: useConvexMutation(api.documents.create),
-        onSuccess: (documentId) => {
-            toast.success('Document created successfully')
-            void router.push(`/documents/${documentId}`)
-        },
-    })
+    const { create, isCreating } = useCreateDocument()
 
     const handleCreateDocument = (title: string, initialContent: string) => {
         create({ title, initialContent })
@@ -32,7 +20,7 @@ export const TemplatesGallery = () => {
 
     return (
         <div className="bg-[#f1f3f4]">
-            <div className="mx-auto flex max-w-screen-xl flex-col gap-y-4 px-16 py-6">
+            <div className="mx-auto flex max-w-7xl flex-col gap-y-4 px-16 py-6">
                 <h3 className="font-medium first-letter:capitalize">
                     start a new document
                 </h3>
@@ -54,7 +42,7 @@ export const TemplatesGallery = () => {
                                          * 3/4 means the width will be three-fourths (75%) of the height, or the height will be four-thirds of the width
                                          * Think of it like a picture frame that is always taller than it is wide.
                                          */
-                                        'aspect-[3/4]',
+                                        'aspect-3/4',
                                         isCreating &&
                                             'pointer-events-none opacity-50', // 'pointer-events-none' is used to make the element non-interactive
                                     )}
