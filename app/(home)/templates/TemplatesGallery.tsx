@@ -52,7 +52,7 @@ export const TemplatesGallery = () => {
                                         onClick={() =>
                                             handleCreateDocument(
                                                 template.title,
-                                                '',
+                                                template.initialContent,
                                             )
                                         }
                                         style={{
