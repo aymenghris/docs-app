@@ -1,4 +1,8 @@
-import { FC, useState } from 'react'
+import { FC } from 'react'
+import {
+    DeleteDocumentDialog,
+    RenameDocumentDialog,
+} from '@/components/document-mutation-dialogs/'
 import { Button } from '@/components/ui/button'
 import {
     DropdownMenu,
@@ -6,8 +10,7 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-import { DeleteDocumentDialog } from '@home/documents-table/document-menu/DeleteDocumentDialog'
-import { RenameDocumentDialog } from '@home/documents-table/document-menu/RenameDocumentDialog'
+import { useDialog } from '@/hooks/useDialog'
 import { DocumentId } from '@home/documents-table/document-menu/types'
 import {
     ExternalLinkIcon,
@@ -20,8 +23,9 @@ export const DocumentMenu: FC<{ documentId: DocumentId; title: string }> = ({
     documentId,
     title,
 }) => {
-    const [showDeleteDialog, setShowDeleteDialog] = useState(false)
-    const [showRenameDialog, setShowRenameDialog] = useState(false)
+    const { activeDialog, activeDocumentId, openDialog, closeDialog } =
+        useDialog()
+    const isThisDocument = activeDocumentId === documentId
 
     const handleOpenInNewTab = () => {
         window.open(`/documents/${documentId}`, '_blank', 'noopener,noreferrer')
@@ -40,11 +44,15 @@ export const DocumentMenu: FC<{ documentId: DocumentId; title: string }> = ({
                     </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
-                    <DropdownMenuItem onClick={() => setShowRenameDialog(true)}>
+                    <DropdownMenuItem
+                        onClick={() => openDialog('rename', documentId)}
+                    >
                         <FilePenIcon />
                         Rename
                     </DropdownMenuItem>
-                    <DropdownMenuItem onClick={() => setShowDeleteDialog(true)}>
+                    <DropdownMenuItem
+                        onClick={() => openDialog('delete', documentId)}
+                    >
                         <Trash2Icon className="mr-2" />
                         Delete
                     </DropdownMenuItem>
@@ -57,15 +65,15 @@ export const DocumentMenu: FC<{ documentId: DocumentId; title: string }> = ({
 
             <DeleteDocumentDialog
                 documentId={documentId}
-                open={showDeleteDialog}
-                onOpenChange={setShowDeleteDialog}
+                open={isThisDocument && activeDialog === 'delete'}
+                onOpenChange={(open) => !open && closeDialog()}
             ></DeleteDocumentDialog>
 
             <RenameDocumentDialog
                 documentId={documentId}
                 initialTitle={title}
-                open={showRenameDialog}
-                onOpenChange={setShowRenameDialog}
+                open={isThisDocument && activeDialog === 'rename'}
+                onOpenChange={(open) => !open && closeDialog()}
             />
         </>
     )
