@@ -2,6 +2,7 @@ import { useCallback } from 'react'
 import { FontSizeExtension } from '@/extensions/font-size'
 import { LineHeightExtension } from '@/extensions/line-height'
 import { useMargins } from '@/hooks/useMargins'
+import { useDocumentInitContentStore } from '@/stores/use-document-init-content-store'
 import { useEditorStore } from '@/stores/use-editor-store'
 import { useLiveblocksExtension } from '@liveblocks/react-tiptap'
 import Highlight from '@tiptap/extension-highlight'
@@ -15,7 +16,15 @@ import ImageResize from 'tiptap-extension-resize-image'
 
 export const useTiptapEditor = () => {
     const { setEditor } = useEditorStore()
-    const liveblocks = useLiveblocksExtension()
+    const documentInitialContent = useDocumentInitContentStore(
+        (state) => state.initContent,
+    )
+
+    const liveblocks = useLiveblocksExtension({
+        initialContent: documentInitialContent,
+        offlineSupport_experimental: true,
+    })
+
     const { leftMargin, rightMargin } = useMargins()
 
     const report = useCallback(({ editor }: { editor: Editor }) => {
