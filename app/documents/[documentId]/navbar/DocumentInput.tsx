@@ -1,13 +1,15 @@
 'use client'
 
 import { ChangeEvent, KeyboardEvent, useEffect, useRef } from 'react'
-import { useDocument } from '@/hooks/useDocument'
 import { useEditableDocumentTitle } from '@/hooks/useEditableDocumentTitle'
+import { useDocumentStore } from '@/stores/use-document-store'
 import { Loader2 } from 'lucide-react'
 import { BsCloudCheck, BsCloudSlash } from 'react-icons/bs'
 
 export const DocumentInput = () => {
-    const document = useDocument()
+    const { document } = useDocumentStore()
+    if (!document) return null
+
     const inputRef = useRef<HTMLInputElement>(null)
 
     const {

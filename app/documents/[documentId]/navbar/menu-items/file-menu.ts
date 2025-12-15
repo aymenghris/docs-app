@@ -1,3 +1,4 @@
+import { useDialogStore } from '@/stores/use-dialog-store'
 import { EditorDocumentArgs, MenuItem } from '@navbar/menu-items/types'
 import {
     FileIcon,
@@ -16,6 +17,8 @@ export const getFileMenu = ({
     document: documentInfo,
     onCreateDocument: create,
 }: EditorDocumentArgs): MenuItem => {
+    const { openDialog } = useDialogStore.getState()
+
     const onDownload = (blob: Blob, filename: string) => {
         const url = URL.createObjectURL(blob)
         const link = document.createElement('a')
@@ -89,13 +92,20 @@ export const getFileMenu = ({
                 label: 'New Document',
                 icon: FilePlusIcon,
                 hasSeparator: true,
-                onClick: () => {
-                    console.log('New Document clicked!')
-                    create({ title: 'Untitled Document', initialContent: '' })
-                },
+                onClick: () =>
+                    create({ title: 'Untitled Document', initialContent: '' }),
             },
-            { label: 'Rename', icon: FilePenIcon },
-            { label: 'Delete', icon: TrashIcon, hasSeparator: true },
+            {
+                label: 'Rename',
+                icon: FilePenIcon,
+                onClick: () => openDialog('rename', documentInfo._id),
+            },
+            {
+                label: 'Delete',
+                icon: TrashIcon,
+                hasSeparator: true,
+                onClick: () => openDialog('delete', documentInfo._id),
+            },
             {
                 label: 'Print',
                 icon: PrinterIcon,

@@ -1,6 +1,7 @@
 'use client'
 
 import { Fragment, useMemo } from 'react'
+import { DocumentDialog } from '@/components/document-mutation-dialogs/DocumentDialogs'
 import {
     Menubar,
     MenubarContent,
@@ -14,16 +15,21 @@ import {
     MenubarTrigger,
 } from '@/components/ui/menubar'
 import { useCreateDocument } from '@/hooks/useCreateDocument'
-import { useDocument } from '@/hooks/useDocument'
+import { useDialogStore } from '@/stores/use-dialog-store'
+import { useDocumentStore } from '@/stores/use-document-store'
 import { useEditorStore } from '@/stores/use-editor-store'
 import { getMenuItems } from '@navbar/menu-items'
 import { MenuItem } from '@navbar/menu-items/types'
 
 export const MenuBar = () => {
-    const { editor } = useEditorStore()
-    const document = useDocument()
+    const editor = useEditorStore((state) => state.editor)
+    const document = useDocumentStore((state) => state.document)
+    if (!document) return null
 
     const { create } = useCreateDocument()
+
+    const { activeDialog, activeDocumentId, closeDialog } = useDialogStore()
+    const isThisDocument = activeDocumentId === document._id
 
     const menuItems = useMemo(
         () =>
@@ -84,24 +90,34 @@ export const MenuBar = () => {
     }
 
     return (
-        <div className="flex">
-            <Menubar className="h-auto border-none bg-transparent p-0 shadow-none">
-                {menuItems.map((item) => (
-                    <Fragment key={item.label}>
-                        <MenubarMenu>
-                            <MenubarTrigger className="hover:bg-muted h-auto rounded-sm px-[7px] py-0.5 text-sm font-normal">
-                                {item.label}
-                            </MenubarTrigger>
-                            <MenubarContent className="print:hidden">
-                                {item.submenu?.map((subItem) =>
-                                    renderMenuItem(subItem),
-                                )}
-                            </MenubarContent>
-                        </MenubarMenu>
-                        {item.hasSeparator && <MenubarSeparator />}
-                    </Fragment>
-                ))}
-            </Menubar>
-        </div>
+        <>
+            <div className="flex">
+                <Menubar className="h-auto border-none bg-transparent p-0 shadow-none">
+                    {menuItems.map((item) => (
+                        <Fragment key={item.label}>
+                            <MenubarMenu>
+                                <MenubarTrigger className="hover:bg-muted h-auto rounded-sm px-[7px] py-0.5 text-sm font-normal">
+                                    {item.label}
+                                </MenubarTrigger>
+                                <MenubarContent className="print:hidden">
+                                    {item.submenu?.map((subItem) =>
+                                        renderMenuItem(subItem),
+                                    )}
+                                </MenubarContent>
+                            </MenubarMenu>
+                            {item.hasSeparator && <MenubarSeparator />}
+                        </Fragment>
+                    ))}
+                </Menubar>
+            </div>
+
+            <DocumentDialog
+                documentId={document._id}
+                title={document.title}
+                activeDialog={activeDialog}
+                isThisDocument={isThisDocument}
+                onClose={closeDialog}
+            />
+        </>
     )
 }
