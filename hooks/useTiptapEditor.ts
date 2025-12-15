@@ -32,6 +32,8 @@ export const useTiptapEditor = () => {
     }, [])
 
     return useEditor({
+        autofocus: true,
+
         onCreate: report,
         onUpdate: report,
         onSelectionUpdate: report,
