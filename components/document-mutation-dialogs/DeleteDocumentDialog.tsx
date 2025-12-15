@@ -13,19 +13,20 @@ import {
 } from '@/components/ui/alert-dialog'
 import { useConvexMutation } from '@convex-dev/react-query'
 import { api } from '@convex/_generated/api'
+import { DocumentDialogProps } from '@home/documents-table/document-menu/types'
 import { useMutation } from '@tanstack/react-query'
+import { useRouter } from 'next/navigation'
 import { toast } from 'sonner'
-import { DocumentDialogProps } from './types'
 
 export const DeleteDocumentDialog: FC<DocumentDialogProps> = ({
     documentId,
     open,
     onOpenChange,
 }) => {
-    const { mutate, isPending: isDeleting } = useMutation({
+    const router = useRouter()
+
+    const { mutateAsync, isPending: isDeleting } = useMutation({
         mutationFn: useConvexMutation(api.documents.deleteById),
-        onSuccess: () => toast.success('Document deleted successfully'),
-        onError: () => toast.error('Failed to delete document'),
     })
 
     return (
@@ -41,11 +42,22 @@ export const DeleteDocumentDialog: FC<DocumentDialogProps> = ({
                 <AlertDialogFooter>
                     <AlertDialogAction
                         disabled={isDeleting}
-                        onClick={() => mutate({ id: documentId })}
+                        onClick={(e) => {
+                            e.stopPropagation()
+                            onOpenChange(false)
+                            router.push('/')
+                            toast.promise(mutateAsync({ id: documentId }), {
+                                loading: 'Deleting...',
+                                success: 'Document deleted successfully',
+                                error: 'Failed to delete document',
+                            })
+                        }}
                     >
                         Delete
                     </AlertDialogAction>
-                    <AlertDialogCancel>Cancel</AlertDialogCancel>
+                    <AlertDialogCancel onClick={(e) => e.stopPropagation()}>
+                        Cancel
+                    </AlertDialogCancel>
                 </AlertDialogFooter>
             </AlertDialogContent>
         </AlertDialog>

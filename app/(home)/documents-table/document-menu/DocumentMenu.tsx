@@ -1,8 +1,5 @@
 import { FC } from 'react'
-import {
-    DeleteDocumentDialog,
-    RenameDocumentDialog,
-} from '@/components/document-mutation-dialogs/'
+import { DocumentDialog } from '@/components/document-mutation-dialogs/DocumentDialogs'
 import { Button } from '@/components/ui/button'
 import {
     DropdownMenu,
@@ -63,17 +60,12 @@ export const DocumentMenu: FC<{ documentId: DocumentId; title: string }> = ({
                 </DropdownMenuContent>
             </DropdownMenu>
 
-            <DeleteDocumentDialog
+            <DocumentDialog
                 documentId={documentId}
-                open={isThisDocument && activeDialog === 'delete'}
-                onOpenChange={(open) => !open && closeDialog()}
-            ></DeleteDocumentDialog>
-
-            <RenameDocumentDialog
-                documentId={documentId}
-                initialTitle={title}
-                open={isThisDocument && activeDialog === 'rename'}
-                onOpenChange={(open) => !open && closeDialog()}
+                title={title}
+                activeDialog={activeDialog}
+                isThisDocument={isThisDocument}
+                onClose={closeDialog}
             />
         </>
     )

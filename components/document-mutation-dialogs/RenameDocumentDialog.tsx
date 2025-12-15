@@ -14,9 +14,9 @@ import {
 import { Input } from '@/components/ui/input'
 import { useConvexMutation } from '@convex-dev/react-query'
 import { api } from '@convex/_generated/api'
+import { DocumentDialogProps } from '@home/documents-table/document-menu/types'
 import { useMutation } from '@tanstack/react-query'
 import { toast } from 'sonner'
-import { DocumentDialogProps } from './types'
 
 interface RenameDocumentDialogProps extends DocumentDialogProps {
     initialTitle: string
