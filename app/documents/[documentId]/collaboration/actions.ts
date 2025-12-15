@@ -34,5 +34,6 @@ export const getUsers = async () => {
             user.primaryEmailAddress?.emailAddress ??
             'Anonymous',
         avatar: user.imageUrl,
+        color: '#000',
     }))
 }

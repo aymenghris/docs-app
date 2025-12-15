@@ -1,3 +1,4 @@
+import { generateColorFromName } from '@/app/api/liveblocks-auth/utils'
 import { CustomSessionClaims } from '@/types/clerk'
 import { auth, currentUser } from '@clerk/nextjs/server'
 import { api } from '@convex/_generated/api'
@@ -45,13 +46,14 @@ export const POST = async (req: NextRequest) => {
             { status: 403 },
         )
 
+    const name =
+        user.firstName ?? user.primaryEmailAddress?.emailAddress ?? 'Anonymous'
+
     const session = liveblocks.prepareSession(user.id, {
         userInfo: {
-            name:
-                user.firstName ??
-                user.primaryEmailAddress?.emailAddress ??
-                'Anonymous',
+            name,
             avatar: user.imageUrl,
+            color: generateColorFromName(name),
         },
     })
 
