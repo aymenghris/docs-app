@@ -1,36 +1,31 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Docs
 
-## Getting Started
+A real-time collaborative document editor that allows users to create, edit, and manage rich text documents seamlessly. Built for teams and individuals who need a fast, responsive, and organized workspace for their notes and projects.
 
-First, run the development server:
+🔗 **Live Demo:** [https://portfolio-docs-app.vercel.app](https://portfolio-docs-app.vercel.app)  
+🌐 **Portfolio:** [https://aymenghris.vercel.app](https://aymenghris.vercel.app)  
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 📸 Preview 
+![Project Screenshot](./assets/preview.gif)  
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ✨ Key Features 
+- Real-time Collaboration: Edit documents simultaneously with others, complete with live cursors, avatars, and real-time syncing.
+- Rich Text Editing: Advanced text formatting using Tiptap, including custom extensions, text highlights, tables, and resizable images.
+- Document Management: Create documents from templates, search, rename, delete, and paginate through your workspace.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠 Tech Stack 
+- Frontend: `React` `Next.js` `Tailwind CSS` `Tiptap` `shadcn/ui` `Zustand`
+- Backend/Services: `Convex` `Liveblocks` `Clerk`
+- Deployment: `Vercel`
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 💡 What I Learned 
+- The concept of a real-time database, how to use Convex, and how to seamlessly integrate it with Clerk authentication.
+- How JSON Web Tokens (JWT) work for secure user authentication.
+- How to structure and organize code effectively for better readability and maintainability.
+- What debouncing is and how to implement it properly in React applications.
+- How to use the Tiptap rich-text editor, leverage its extensions, and create custom extensions.
+- How to use shadcn/ui and fully customize its components to match the design system.
+- How to implement global state management cleanly using Zustand.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 👤 Contact 
+[LinkedIn](https://linkedin.com/in/aymenghris) • [Email](mailto:aymenghris@outlook.com) • [GitHub](https://github.com/aymenghris)
