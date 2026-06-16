@@ -57,7 +57,9 @@ export const useTiptapEditor = () => {
             Highlight.configure({
                 multicolor: true,
             }),
-            ImageResize,
+            ImageResize.configure({
+                allowBase64: true,
+            }),
             LineHeightExtension,
             liveblocks,
             StarterKit.configure({

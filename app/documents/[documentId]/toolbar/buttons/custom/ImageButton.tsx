@@ -46,13 +46,18 @@ export const ImageButton = () => {
             return
         }
 
-        const imageUrl = URL.createObjectURL(file)
-        applyImage(imageUrl)
+        const reader = new FileReader()
+        reader.onload = () => {
+            if (typeof reader.result === 'string') {
+                applyImage(reader.result)
+            }
+        }
+        reader.readAsDataURL(file)
 
-        // Clean up the blob URL after a delay to ensure the image loads
-        setTimeout(() => {
-            URL.revokeObjectURL(imageUrl)
-        }, 100)
+        // Reset the input so the same file can be selected again
+        if (fileInputRef.current) {
+            fileInputRef.current.value = ''
+        }
     }
 
     const onImageUpload = () => {
