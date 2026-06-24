@@ -19,13 +19,13 @@ A real-time collaborative document editor that allows users to create, edit, and
 - Deployment: `Vercel`
 
 ## 💡 What I Learned 
-- The concept of a real-time database, how to use Convex, and how to seamlessly integrate it with Clerk authentication.
-- How JSON Web Tokens (JWT) work for secure user authentication.
-- How to structure and organize code effectively for better readability and maintainability.
-- What debouncing is and how to implement it properly in React applications.
-- How to use the Tiptap rich-text editor, leverage its extensions, and create custom extensions.
-- How to use shadcn/ui and fully customize its components to match the design system.
-- How to implement global state management cleanly using Zustand.
+- **Real-Time Infrastructure**: Architected live data synchronization using Convex and securely integrated it with Clerk for robust identity management.
+- **Authentication Security**: Deepened understanding of token-based authentication protocols and JWT lifecycles for secure user sessions.
+- **Scalable Architecture**: Established modular project structures emphasizing code reusability, separation of concerns, and long-term maintainability.
+- **Performance Optimization**: Implemented performance techniques like debouncing to efficiently handle high-frequency React state updates.
+- **Advanced Editor Engineering**: Mastered rich-text integration using Tiptap, extending core functionality through custom plugins and node extensions.
+- **Design System Implementation**: Customized and deployed accessible, reusable UI components utilizing shadcn/ui to align with exact design requirements.
+- **State Management**: Streamlined global state management across the application using Zustand for predictable and performant data flow.
 
 ## 👤 Contact 
 [LinkedIn](https://linkedin.com/in/aymenghris) • [Email](mailto:aymenghris@outlook.com) • [GitHub](https://github.com/aymenghris)
